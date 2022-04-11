@@ -17,8 +17,7 @@ class Person {
   @override
   String toString() => 'name: $name, age: $age, height: $height';
 
-  String describe() =>
-      "Hello, I'm $name. I'm $age years old. I'm $height meters tall";
+  String describe() => "Hello, I'm $name. I'm $age years old. I'm $height meters tall";
 
   void sayName() => print("Hello, I'm $name");
 }

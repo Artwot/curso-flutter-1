@@ -16,8 +16,7 @@ class Person {
   final int age;
   final double height;
 
-  String describe() =>
-      "Hello, I'm $name. I'm $age years old. I'm $height meters tall";
+  String describe() => "Hello, I'm $name. I'm $age years old. I'm $height meters tall";
 
   void sayName() => print("Hello, I'm $name");
 }
