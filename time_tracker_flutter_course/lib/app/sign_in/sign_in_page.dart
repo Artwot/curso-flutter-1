@@ -1,9 +1,20 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:time_tracker_flutter_course/app/sign_in/sign_in_button.dart';
 import 'package:time_tracker_flutter_course/app/sign_in/social_sign_in_button.dart';
-import 'package:time_tracker_flutter_course/common_widgets/custom_raised_button.dart';
 
 class SignInPage extends StatelessWidget {
+  Future<void> _signInAnonymously() async {
+    /*
+      Usamos el patrón de diseño Singleton, el cual es usado en POO con la 
+      finalidad de usar no más de una instancia de una clase. Además provee
+      acceso global a los recursos
+    */
+    // Retorna un Future<UserCredencial>
+    final userCredentials = await FirebaseAuth.instance.signInAnonymously();
+    print('${userCredentials.user.uid}');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,9 +35,9 @@ class SignInPage extends StatelessWidget {
       padding: EdgeInsets.all(16.0),
       // Un child puede tener un Widget dentro de sí mismo.
       child: Column(
-        // Para distribuir el contenido a lo largo del contenedor
+        // Para distribuir el contenido a lo largo del container.
         mainAxisAlignment: MainAxisAlignment.center,
-        // Para ocupar todo el ancho del contenedor
+        // Para ocupar todo el ancho del container.
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Text(
@@ -76,7 +87,8 @@ class SignInPage extends StatelessWidget {
             text: 'Go anonymous',
             textColor: Colors.black,
             color: Colors.lime[300],
-            onPressed: () {},
+            // 'onPressed' es un callback, y no es necesario agregar (), pues no toma argumentos
+            onPressed: _signInAnonymously,
           ),
         ],
       ),
